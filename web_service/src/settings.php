@@ -1,8 +1,7 @@
 <?php
 return [
     'settings' => [
-        'displayErrorDetails' => true, // set to false in production
-        'addContentLengthHeader' => false, // Allow the web server to send the content-length header
+        'displayErrorDetails' => true,
 
         // Renderer settings
         'renderer' => [
@@ -13,7 +12,14 @@ return [
         'logger' => [
             'name' => 'slim-app',
             'path' => __DIR__ . '/../logs/app.log',
-            'level' => \Monolog\Logger::DEBUG,
         ],
+        
+        // Configuración de mi APP
+        'app_token_name'   => 'APP-TOKEN',
+        'connectionString' => [
+            'dns'  => 'pgsql:host=localhost;dbname=stock_manager',
+            'user' => 'postgres',
+            'pass' => 'apy2016'
+        ]
     ],
 ];
