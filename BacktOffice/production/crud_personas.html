@@ -163,7 +163,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Productos <small></small></h2>
+                    <h2>Personas <small></small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -171,100 +171,227 @@
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <br />
-                    <form enctype="multipart/form-data" method="POST" id="formuploadajax" data-parsley-validate class="form-horizontal form-label-left">
+                  <br />
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2><i class="fa fa-bars"></i> Personas - Proveedores - Clientes -  Usuarios </h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                          <li><a href="#">Settings 1</a>
+                          </li>
+                          <li><a href="#">Settings 2</a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+
+                    <div class="col-xs-9">
+                      <!-- Tab panes -->
+                      <div class="tab-content">
+                   <div class="tab-pane active" id="home-r">
+                           <div>
+                  <form enctype="multipart/form-data" method="POST" id="formuploadajax" data-parsley-validate class="form-horizontal form-label-left">
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Nombre <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Primer Nombre <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="idnombre" required="required" class="form-control col-md-7 col-xs-12">
+                          <input type="text" id="idprimernombre" required="required" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Descripción <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Segundo Nombre <span class="required">*</span>
                         </label>  
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input type="text" id="iddescripcion" class="form-control col-md-7 col-xs-12" />
+                            <input type="text" id="idsegundonombre" class="form-control col-md-7 col-xs-12" />
                         </div>
                       </div>
-                        
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">COdigo de Barras <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Primer Apellido <span class="required">*</span>
                         </label>  
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input type="text" id="idcodigobarras" class="form-control col-md-7 col-xs-12" />
+                            <input type="text" id="idprimerapellido" class="form-control col-md-7 col-xs-12" />
+                        </div>
+                      </div>   
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Segundo Apellido <span class="required">*</span>
+                        </label>  
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" id="idsegundoapellido" class="form-control col-md-7 col-xs-12" />
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Apellido Casada <span class="required">*</span>
+                        </label>  
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" id="idapellidocadafa" class="form-control col-md-7 col-xs-12" />
                         </div>
                       </div>           
-                        
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">I.V.A <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Fecha de nacimiento <span class="required">*</span>
                         </label>  
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <div class="input-group">
-                                <select  id="idiva" class="form-control col-md-7 col-xs-12"><option>Seleccione I.V.A</option></select>
-                                <span class="input-group-btn">
-                                    <button type="button" class="btn btn-success">Nuevo</button>
-                                </span>
-                            </div>
+                            <input type="text" id="idfechanacimiento" class="form-control col-md-7 col-xs-12" />
                         </div>
-                      </div>     
-
+                      </div>                     
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Categoria <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">estado Civil <span class="required">*</span>
                         </label>  
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <div class="input-group">
-                                <select  id="idcategoria" class="form-control col-md-7 col-xs-12" onchange="getSubCategoria();"><option>Seleccione Categoria</option></select>
-                                <span class="input-group-btn">
-                                    <button type="button" class="btn btn-success">Nuevo</button>
-                                </span>
+                                <select  id="idestadocivil" class="form-control col-md-7 col-xs-12" ">
+                                    <option value="">Seleccione estado civil</option>
+                                    <option value="0">Soltero</option>
+                                    <option value="1">Casado</option>
+                                    <option value="2">Divorciado</option>
+                                </select>
                             </div>
                         </div>
                       </div> 
                       <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Sub - Categoria <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Correo <span class="required">*</span>
+                        </label>  
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" id="idmail" class="form-control col-md-7 col-xs-12" />
+                        </div>
+                      </div>     
+
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Sexo <span class="required">*</span>
                         </label>  
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <div class="input-group">
-                                <select  id="idsubcategoria" class="form-control col-md-7 col-xs-12"><option>Seleccione Sub - Categoria</option></select>
-                                <span class="input-group-btn">
-                                    <button type="button" class="btn btn-success">Nuevo</button>
-                                </span>
+                                <select  id="idsexo" class="form-control col-md-7 col-xs-12" ">
+                                    <option value="">Seleccione Sexo</option>
+                                    <option value="0">Masculino</option>
+                                    <option value="1">Femenino</option>
+                                    <option value="2">No aplicable</option>
+                                </select>
+                            </div>
+                        </div>
+                      </div> 
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Tipo de Documento <span class="required">*</span>
+                        </label>  
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="input-group">
+                                <select  id="idtipo" class="form-control col-md-7 col-xs-12"><option>Seleccione su tipo de documento</option></select>
                             </div>
                         </div>
                       </div> 
                         
                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Precio Compra <span class="required">*</span>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Nro. Documento <span class="required">*</span>
                         </label>  
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input type="number" id="idpreciocompra" class="form-control col-md-7 col-xs-12" />
+                            <input type="text" id="idnrodocumento" class="form-control col-md-7 col-xs-12" />
                         </div>
                       </div>                          
 
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Precio Venta <span class="required">*</span>
+                     <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Nacionalidad <span class="required">*</span>
                         </label>  
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input type="number" id="idprecioventa" class="form-control col-md-7 col-xs-12" />
+                            <div class="input-group">
+                                <select  id="idpais"  class="form-control col-md-7 col-xs-12"><option>Seleccione su nacionalidad</option></select>
+                            </div>
                         </div>
-                      </div>
+                      </div> 
 
-                      <div class="form-group">
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Precio Minimo <span class="required">*</span>
+                     <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Ciudad <span class="required">*</span>
                         </label>  
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input type="number" id="idpreciominimo" class="form-control col-md-7 col-xs-12" />
+                            <div class="input-group">
+                                <select  id="idciudad" onchange="getBarrios(); alert('hola');" class="form-control col-md-7 col-xs-12"><option>Seleccione su ciudad</option></select>
+                            </div>
                         </div>
                       </div>  
-                      <div class="form-group">
+                     <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Barrio <span class="required">*</span>
+                        </label>  
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="input-group">
+                                <select  id="idbarrio" class="form-control col-md-7 col-xs-12"><option>Seleccione su barrio</option></select>
+                            </div>
+                        </div>
+                      </div>  
+                        <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                            <button type="button" class="btn btn-success" onclick="insertProducto();">Guardar</button>
+                            <button type="button" class="btn btn-success" onclick="insertPersona();">Guardar</button>
                           <button type="reset" class="btn btn-primary">Cancel</button>
                         </div>
                       </div>
                     </form>
                   </div>
+                 </div>
+                        <div class="tab-pane" id="profile-r">
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Persona <span class="required">*</span>
+                        </label>  
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" id="idpersonaguardada" class="form-control col-md-7 col-xs-12" disabled/>
+                        </div>
+                      </div> 
+                      <br>
+                      <br>
+                      <br>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Tipo de Persona <span class="required">*</span>
+                        </label>  
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="input-group">
+                                <select  id="idtipopersona" class="form-control col-md-7 col-xs-12"><option>Seleccione el tipo de persona</option></select>
+                            </div>
+                        </div>
+                      </div> 
+                      <br>
+                      <br>
+                      <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Estado <span class="required">*</span>
+                        </label>  
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="input-group">
+                                <select  id="idestado" class="form-control col-md-7 col-xs-12">
+                                    <option>Seleccione el estado</option>                                    
+                                    <option value="A">ACTIVO</option>
+                                    <option value="I">INACTIVO</option>
+                                </select>
+                            </div>
+                        </div>
+                      </div> 
+                        <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                            <button type="button" class="btn btn-success" onclick="insertTipoPersona();">Guardar</button>
+                          <button type="reset" class="btn btn-primary">Cancel</button>
+                        </div>
+                      </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-xs-3">
+                      <!-- required for floating -->
+                      <!-- Nav tabs -->
+                      <ul class="nav nav-tabs tabs-right">
+                        <li class="active"><a href="#home-r" data-toggle="tab">Personas</a>
+                        </li>
+                        <li><a href="#profile-r" data-toggle="tab">Tipo de Personas</a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
                     <span id="nocarga" />
                     <div class="row">
                       <div class="col-md-12 col-sm-12 col-xs-12">
@@ -276,10 +403,10 @@
                             <table id="datatable" class="table table-striped table-bordered">
                               <thead>
                                 <tr>
-                                  <th>Id Producto</th>
-                                  <th>Nombre</th>
-                                  <th>Descripcion</th>
-                                  <th>Codigo de Barras</th>
+                                  <th>Id Persona</th>
+                                  <th>Primero Nombre</th>
+                                  <th>Segundo Nombre</th>
+                                  <th>Primer Apellido</th>
                                   <th>I.V.A</th>
                                   <th>Categoria</th>
                                   <th>Precio compra</th>
@@ -581,7 +708,7 @@
     <script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
-    <script src="js/producto.js"></script>
+    <script src="js/persona.js"></script>
     <!-- bootstrap-daterangepicker -->
     <script>
       $(document).ready(function() {

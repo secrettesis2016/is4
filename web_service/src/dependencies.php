@@ -35,6 +35,13 @@ $container['model'] = function($c){
         'producto' =>  new App\Model\ProductoModel($c->db),
         'iva' =>  new App\Model\IvaModel($c->db),
         'categoria' =>  new App\Model\CategoriaModel($c->db),
+        'pais' =>  new App\Model\PaisModel($c->db),
+        'ciudad' =>  new App\Model\CiudadModel($c->db),
+        'barrio' =>  new App\Model\BarrioModel($c->db),
+        'tipo_documento' =>  new App\Model\TipoDocumentoModel($c->db),
+        'persona' =>  new App\Model\PersonaModel($c->db),
+        'persona_tipo' =>  new App\Model\PersonaTipoModel($c->db),        
+        'tipo_persona' =>  new App\Model\TipoDePersonaModel($c->db),
 
 
 
