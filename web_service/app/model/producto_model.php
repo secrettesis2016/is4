@@ -78,26 +78,29 @@ and c.idcategoria = p.categoria";
     
     public function update($data, $id)
     {
-        $stmt = $this->db->prepare("UPDATE $this->table SET categoria = :categoria, unidad = :unidad, persona = :persona, descripcion = :descripcion, nombre_producto = :nombre_producto, precio = :precio, estado = :estado WHERE $this->table_id = :producto");   
-   
-        $stmt->bindParam(':producto', $producto);
-        $stmt->bindParam(':categoria', $categoria);
-        $stmt->bindParam(':unidad', $unidad);
-        $stmt->bindParam(':persona', $persona);
+        $stmt = $this->db->prepare("UPDATE $this->table SET nombre =  :nombre, descripcion =  :descripcion,codigo_barras= :codigo_barras, idiva=:idiva,categoria= :categoria,precio_compra= :precio_compra,precio_venta= :precio_venta,precio_minimo= :precio_minimo,margen_ganancia= :margen_ganancia WHERE $this->table_id = :clave");   
+        
+        $stmt->bindParam(':clave', $clave);
+        $stmt->bindParam(':nombre', $nombre);
         $stmt->bindParam(':descripcion', $descripcion);
-        $stmt->bindParam(':nombre_producto', $nombre_producto);
-        $stmt->bindParam(':precio', $precio);
-        $stmt->bindParam(':estado', $estado);
+        $stmt->bindParam(':codigo_barras', $codigo_barras);
+        $stmt->bindParam(':idiva', $idiva);
+        $stmt->bindParam(':categoria', $categoria);
+        $stmt->bindParam(':precio_compra', $precio_compra);
+        $stmt->bindParam(':precio_venta', $precio_venta);
+        $stmt->bindParam(':precio_minimo', $precio_minimo);
+        $stmt->bindParam(':margen_ganancia', $margen_ganancia);
 
-
-        $producto =$id;
-        $categoria =$data['categoria'];
-        $unidad =$data['unidad'];
-        $persona =$data['persona'];
+        $clave =$id;
+        $nombre =$data['nombre'];
         $descripcion =$data['descripcion'];
-        $nombre_producto =$data['nombre_producto'];
-        $precio =$data['precio'];
-        $estado =$data['estado'];
+        $codigo_barras =$data['codigo_barras'];
+        $idiva =$data['idiva'];
+        $categoria =$data['categoria'];
+        $precio_compra =$data['precio_compra'];
+        $precio_venta =$data['precio_venta'];
+        $precio_minimo =$data['precio_minimo'];
+        $margen_ganancia =$data['margen_ganancia'];
         
 
         $stmt->execute();

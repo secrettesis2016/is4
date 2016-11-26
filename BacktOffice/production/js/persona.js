@@ -33,11 +33,12 @@ function cargar(){
     getPaises();
     getCiudades();
     getTipoPersona();
+    getPersonas();
 }
 
 function cargarEditar(id){
             $.ajax({
-                url:   'http://localhost/is4/web_service/public/producto/get/' + id,
+                url:   'http://52.67.57.33/_junior/web_service/public/index.php/producto/get/' + id,
                 type:  'get',
                 beforeSend: function () {
 
@@ -62,7 +63,7 @@ function cargarEditar(id){
 
 function cargarEliminar(id){
             $.ajax({
-                url:   'http://localhost/is4/web_service/public/producto/get/' + id,
+                url:   'http://52.67.57.33/_junior/web_service/public/index.php/persona/get/' + id,
                 type:  'get',
                 beforeSend: function () {
 
@@ -71,23 +72,16 @@ function cargarEliminar(id){
                     $('#alerta').show();
                 },
                 success:  function (response) {
-                    $('#idproductodelete').val(response.idproducto);
-                    $('#idnombredelete').val(response.nombre);
-                    $('#iddescripciondelete').val(response.descripcion);
-                    $('#idivadelete').append("<option value='" + response.idiva + "' selected>"+response.iva_descripcion+"</option>");
-                    $('#idsubcategoriadelete').append("<option value='" + response.categoria + "' selected>"+response.categoria_nombre+"</option>");
-                    $('#idpreciocompradelete').val(response.precio_compra);
-                    $('#idprecioventadelete').val(response.precio_venta);
-                    $('#idpreciominimodelete').val(response.precio_minimo);
+                    $('#idpersonadelete').val(response.idpersona);
                 }
             });
 }
 
 
-function deleteProducto(){
-            var id = document.getElementById("idproductodelete").value;
+function deletePersona(){
+            var id = document.getElementById("idpersonadelete").value;
             $.ajax({
-                url:   'http://localhost/is4/web_service/public/producto/delete/' + id,
+                url:   'http://52.67.57.33/_junior/web_service/public/index.php/persona/delete/' + id,
                 type:  'delete',
                 beforeSend: function () {
                     $('#datatable').children().empty();
@@ -97,11 +91,36 @@ function deleteProducto(){
                     $('#alerta').show();
                 },
                 success:  function (response) {
-                    getProductos();
+                    alert('Persona Eliminada');
+                    getPersonas();
                 }
             });
 }
 
+function deletePersonaPorTipo(){
+            var id = document.getElementById("idpersonadelete").value;
+            $.ajax({
+                url:   'http://52.67.57.33/_junior/web_service/public/index.php/persona_tipo/delete/' + id,
+                type:  'delete',
+                beforeSend: function () {
+                    $('#datatable').children().empty();
+                    $('#antes').show();
+                },
+                error: function (response){
+                    $('#alerta').show();
+                },
+                success:  function (response) {
+                    deletePersona();
+                    getPersonas();
+                    alert('Relacion Eliminada')
+                }
+            });
+}
+
+
+function validar(){
+    
+}
 /*
 function updateNoticia(){
         var noticia = document.getElementById("idnoticiaedit").value;
@@ -119,7 +138,7 @@ function updateNoticia(){
         };
         $.ajax({
                 data: parametros,
-                url:   'http://localhost/aluvi/web_service/public/noticia/update/' + noticia,
+                url:   'http:/localhost/aluvi/web_service/public/index.php/noticia/update/' + noticia,
                 type:  'put',
                 beforeSend: function () {
                     $('#datatable').children().empty();
@@ -141,9 +160,9 @@ function cambiarfoto(){
 function cargarFotoInsert(){
     document.getElementById('idfotoinsert').src = document.getElementById('idimagen').value;
 }*/
-function getProductos(){
+function getPersonas(){
             $.ajax({
-                url:   'http://localhost/is4/web_service/public/producto/getAll',
+                url:   'http://52.67.57.33/_junior/web_service/public/index.php/persona/getAll',
                 type:  'get',
                 beforeSend: function () {
                     $("#antes").html("<img src='images/espera.gif'/>");                        
@@ -161,17 +180,61 @@ function getProductos(){
                             $('#antes').hide(); 
                             var longitud = response.data.length;
                             for (var i = 0; i < longitud; i++) {
-                                $('#datatable tbody').append('<tr><td>' + response.data[i].idproducto  + 
-                                '</td><td>' + response.data[i].nombre +    
-                                '</td><td>' + response.data[i].producto_descripcion +       
-                                '</td><td>' + response.data[i].codigo_barras +    
-                                '</td><td>' + response.data[i].iva_descripcion +
-                                '</td><td>' + response.data[i].categoria_nombre +
-                                '</td><td>' + response.data[i].precio_compra +
-                                '</td><td>' + response.data[i].precio_venta +
-                                '</td><td>' + response.data[i].precio_minimo +
-                                '</td><td>' + response.data[i].margen_ganancia +
-                                '</td><td><button id="' + response.data[i].idproducto +'" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="cargarEditar(this.id);">Editar</button><input type="button" data-toggle="modal" data-target="#myModal1" class="btn btn-danger" value="Eliminar" id="' + response.data[i].idproducto +'" onclick="cargarEliminar(this.id);" /></td></tr>');
+                                var estado;
+                                if(response.data[i].estado == 'A'){
+                                    estado = 'Activo';
+                                }else{
+                                    estado = 'Inactivo';
+                                }
+                                if(response.data[i].estado == ''){
+                                    estado = 'Definir';
+                                }
+                                $('#datatable tbody').append('<tr><td>' + response.data[i].idpersona  + 
+                                '</td><td>' + response.data[i].primer_nombre +  " " +  response.data[i].segundo_nombre + ", "  + response.data[i].primer_apellido + ' ' + response.data[i].segundo_apellido + 
+                                '</td><td>' + response.data[i].fecha_nacimiento +       
+                                '</td><td>' + response.data[i].mail +    
+                                '</td><td>' + response.data[i].nro_documento +
+                                '</td><td>' + estado +
+                                '</td><td><button id="' + response.data[i].idpersona +'" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="cargarEditar(this.id);">Editar</button><input type="button" data-toggle="modal" data-target="#myModal1" class="btn btn-danger" value="Eliminar" id="' + response.data[i].idpersona +'" onclick="cargarEliminar(this.id);" /></td></tr>');
+                            }
+                        }
+                }
+            });
+}
+
+function getPersonas2(){
+            $.ajax({
+                url:   'http://52.67.57.33/_junior/web_service/public/index.php/persona/getAll2',
+                type:  'get',
+                beforeSend: function () {
+                    $("#antes").html("<img src='images/espera.gif'/>");                        
+                    $("#nocarga").append('<div class="alert alert-danger" id="alerta" style="display:none"><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a><strong>Error!</strong>Favor, verifique su conexión a internet</div>');
+                },
+                error: function (response){
+                    $("#antes").hide();
+                    $('#alerta').show();
+                },
+                success:  function (response) {
+                        if (isNaN(response.total.total)) {
+                            $('#antes').hide(); 
+                            $('#vacio').html('No se encontro ningun registro.');
+                        }else{
+                            $('#antes').hide(); 
+                            var longitud = response.data.length;
+                            for (var i = 0; i < longitud; i++) {
+                                var estado;
+                                if(response.data[i].estado == 'A'){
+                                    estado = 'Activo';
+                                }else{
+                                    estado = 'Inactivo';
+                                }
+                                $('#datatable tbody').append('<tr><td>' + response.data[i].idpersona  + 
+                                '</td><td>' + response.data[i].primer_nombre +  " " +  response.data[i].segundo_nombre + ", "  + response.data[i].primer_apellido + ' ' + response.data[i].segundo_apellido + 
+                                '</td><td>' + response.data[i].fecha_nacimiento +       
+                                '</td><td>' + response.data[i].mail +    
+                                '</td><td>' + response.data[i].nro_documento +
+                                '</td><td>' + 'Requiere estado' + 
+                                '</td><td><button id="' + response.data[i].idpersona +'" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="cargarEditar(this.id);">Editar</button><input type="button" data-toggle="modal" data-target="#myModal1" class="btn btn-danger" value="Eliminar" id="' + response.data[i].idpersona +'" onclick="cargarEliminar(this.id);" /></td></tr>');
                             }
                         }
                 }
@@ -180,7 +243,7 @@ function getProductos(){
 
 function getPaises(){
             $.ajax({
-                url:   'http://localhost/is4/web_service/public/pais/getAll',
+                url:   'http://52.67.57.33/_junior/web_service/public/index.php/pais/getAll',
                 type:  'get',
                 beforeSend: function () {
                 },
@@ -203,7 +266,7 @@ function getPaises(){
 
 function getPaises(){
             $.ajax({
-                url:   'http://localhost/is4/web_service/public/pais/getAll',
+                url:   'http://52.67.57.33/_junior/web_service/public/index.php/pais/getAll',
                 type:  'get',
                 beforeSend: function () {
                 },
@@ -227,7 +290,7 @@ function getPaises(){
 
 function getCiudades(){
             $.ajax({
-                url:   'http://localhost/is4/web_service/public/ciudad/getAll',
+                url:   'http://52.67.57.33/_junior/web_service/public/index.php/ciudad/getAll',
                 type:  'get',
                 beforeSend: function () {
                 },
@@ -250,7 +313,7 @@ function getBarrios(){
             var x = document.getElementById('idciudad').value;
             
             $.ajax({
-                url:   'http://localhost/is4/web_service/public/barrio/getAll',
+                url:   'http://52.67.57.33/_junior/web_service/public/index.php/barrio/getAll',
                 type:  'get',
                 beforeSend: function () {
                 },
@@ -278,7 +341,7 @@ function getPersona(){
             var x = document.getElementById('idnrodocumento').value;
             
             $.ajax({
-                url:   'http://localhost/is4/web_service/public/persona/cedula/' + x,
+                url:   'http://52.67.57.33/_junior/web_service/public/index.php/persona/cedula/' + x,
                 type:  'get',
                 beforeSend: function () {
                 },
@@ -293,7 +356,7 @@ function getPersona(){
 function getTipoPersona(){
             
             $.ajax({
-                url:   'http://localhost/is4/web_service/public/tipo_persona/getAll',
+                url:   'http://52.67.57.33/_junior/web_service/public/index.php/tipo_persona/getAll',
                 type:  'get',
                 beforeSend: function () {
                 },
@@ -316,7 +379,7 @@ function getTipoPersona(){
 
 function getTiposDocumentos(){
             $.ajax({
-                url:   'http://localhost/is4/web_service/public/tipo_documento/getAll',
+                url:   'http://52.67.57.33/_junior/web_service/public/index.php/tipo_documento/getAll',
                 type:  'get',
                 beforeSend: function () {
                 },
@@ -371,16 +434,17 @@ function insertPersona(){
         };
         $.ajax({
                 data: parametros,
-                url:   'http://localhost/is4/web_service/public/persona/insert',
+                url:   'http://52.67.57.33/_junior/web_service/public/index.php/persona/insert',
                 type:  'post',
                 beforeSend: function () {
                     $('#datatable').children().empty();
-                    $('#antes').show();                    
+                    $('#antes').show();                  
                 },
                 error: function(response) {
                 },
                 success:  function (response) {
-                    getProductos();
+                    $('#antes').hide();                  
+                    getPersonas2();
                     getPersona();
                 }
         });
@@ -390,7 +454,6 @@ function insertTipoPersona(){
         var idpersona = document.getElementById("idpersonaguardada").value;
         var idtipopersona = document.getElementById("idtipopersona").value;
         var estado = document.getElementById("idestado").value;        
-        alert('hols');
         var parametros = {
                 "idpersona" : idpersona,
                 "idtipopersona": idtipopersona,
@@ -398,7 +461,7 @@ function insertTipoPersona(){
         };
         $.ajax({
                 data: parametros,
-                url:   'http://localhost/is4/web_service/public/persona_tipo/insert',
+                url:   'http://52.67.57.33/_junior/web_service/public/index.php/persona_tipo/insert',
                 type:  'post',
                 beforeSend: function () {
                     $('#datatable').children().empty();
@@ -408,6 +471,7 @@ function insertTipoPersona(){
                 },
                 success:  function (response) {
                     alert('insertado');
+                    $('#antes').show();                    
                     getPersonas();
                 }
         });
@@ -439,7 +503,7 @@ function updateProducto(){
         };
         $.ajax({
                 data: parametros,
-                url:   'http://localhost/is4/web_service/public/producto/update/' + id,
+                url:   'http://52.67.57.33/_junior/web_service/public/index.php/producto/update/' + id,
                 type:  'put',
                 beforeSend: function () {
                     $('#datatable').children().empty();

@@ -25,10 +25,14 @@ $app->group('/producto/', function () {
 	
 	$this->post('insert', function ($req, $res, $args) {
 		$clase='producto';
-		return $res->withHeader('Content-type', 'application/json')
+
+                
+                return $res->withHeader('Content-type', 'application/json')
 				->write(
 					json_encode($this->model->$clase->insert($req->getParsedBody()))
 					);
+                
+                
     });
 	
 	$this->put('update/{id}', function ($req, $res, $args) {

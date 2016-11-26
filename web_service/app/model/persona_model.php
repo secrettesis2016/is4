@@ -22,7 +22,7 @@ class PersonaModel
 
     
 
-        $sql = "SELECT * FROM $this->table";        
+        $sql = "SELECT * FROM $this->table, personas_por_tipo WHERE personas.idpersona = personas_por_tipo.idpersona";        
         $stmt  = $this->db->prepare($sql);
         $stmt->execute();
         $data = $stmt->fetchAll();
@@ -40,7 +40,27 @@ class PersonaModel
     }
     
     
+    public function getAll2()
+    {
+
     
+
+        $sql = "SELECT * FROM $this->table";        
+        $stmt  = $this->db->prepare($sql);
+        $stmt->execute();
+        $data = $stmt->fetchAll();
+
+        $sql2 ="SELECT COUNT(*) as total FROM $this->table";
+        $stmt = $this->db->prepare($sql2);
+        $stmt->execute();
+        $total = $stmt->fetch();
+
+        return [
+            'data'  => $data,
+            'total' => $total
+        ];
+    
+    }    
     
     public function insert($data)
     {

@@ -14,7 +14,14 @@ $app->group('/persona/', function () {
 					json_encode($this->model->$clase->getAll())
 					);
     });
-	
+
+        $this->get('getAll2', function ($req, $res, $args) {
+		$clase='persona';
+		return $res->withHeader('Content-type', 'application/json')
+				->write(
+					json_encode($this->model->$clase->getAll2())
+					);
+    });
 	$this->get('get/{id}', function ($req, $res, $args) {
 		$clase='persona';
 		return $res->withHeader('Content-type', 'application/json')

@@ -91,7 +91,7 @@ class PersonaTipoModel
     
     public function delete($id)
     {
-        $sql = "DELETE FROM $this->table WHERE $this->table_id = $id";
+        $sql = "DELETE FROM $this->table WHERE idpersona = $id";
         $stmt = $this->db->prepare($sql);
 
         $stmt->execute();

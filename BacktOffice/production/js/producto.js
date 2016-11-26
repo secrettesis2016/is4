@@ -34,7 +34,7 @@ function cargar(){
 
 function cargarEditar(id){
             $.ajax({
-                url:   'http://localhost/is4/web_service/public/producto/get/' + id,
+                url:   'http://52.67.57.33/_junior/web_service/public/index.php/producto/get/' + id,
                 type:  'get',
                 beforeSend: function () {
 
@@ -45,7 +45,8 @@ function cargarEditar(id){
                 success:  function (response) {
                     $('#idproductoedit').val(response.idproducto);
                     $('#idnombreedit').val(response.nombre);
-                    $('#iddescripcionedit').val(response.descripcion);
+                    $('#iddescripcionedit').val(response.producto_descripcion);
+                    $('#idcodigobarrasedit').val(response.codigo_barras);
                     $('#idivaedit').append("<option value='" + response.idiva + "' selected>"+response.iva_descripcion+"</option>");
                     $('#idsubcategoriaedit').append("<option value='" + response.categoria + "' selected>"+response.categoria_nombre+"</option>");
                     $('#idpreciocompraedit').val(response.precio_compra);
@@ -59,7 +60,7 @@ function cargarEditar(id){
 
 function cargarEliminar(id){
             $.ajax({
-                url:   'http://localhost/is4/web_service/public/producto/get/' + id,
+                url:   'http://52.67.57.33/_junior/web_service/public/index.php/producto/get/' + id,
                 type:  'get',
                 beforeSend: function () {
 
@@ -70,7 +71,7 @@ function cargarEliminar(id){
                 success:  function (response) {
                     $('#idproductodelete').val(response.idproducto);
                     $('#idnombredelete').val(response.nombre);
-                    $('#iddescripciondelete').val(response.descripcion);
+                    $('#iddescripciondelete').val(response.producto_descripcion);
                     $('#idivadelete').append("<option value='" + response.idiva + "' selected>"+response.iva_descripcion+"</option>");
                     $('#idsubcategoriadelete').append("<option value='" + response.categoria + "' selected>"+response.categoria_nombre+"</option>");
                     $('#idpreciocompradelete').val(response.precio_compra);
@@ -84,7 +85,7 @@ function cargarEliminar(id){
 function deleteProducto(){
             var id = document.getElementById("idproductodelete").value;
             $.ajax({
-                url:   'http://localhost/is4/web_service/public/producto/delete/' + id,
+                url:   'http://52.67.57.33/_junior/web_service/public/index.php/producto/delete/' + id,
                 type:  'delete',
                 beforeSend: function () {
                     $('#datatable').children().empty();
@@ -116,7 +117,7 @@ function updateNoticia(){
         };
         $.ajax({
                 data: parametros,
-                url:   'http://localhost/aluvi/web_service/public/noticia/update/' + noticia,
+                url:   'http://localhost/aluvi/web_service/public/index.php/noticia/update/' + noticia,
                 type:  'put',
                 beforeSend: function () {
                     $('#datatable').children().empty();
@@ -140,7 +141,7 @@ function cargarFotoInsert(){
 }*/
 function getProductos(){
             $.ajax({
-                url:   'http://localhost/is4/web_service/public/producto/getAll',
+                url:   'http://52.67.57.33/_junior/web_service/public/index.php/producto/getAll',
                 type:  'get',
                 beforeSend: function () {
                     $("#antes").html("<img src='images/espera.gif'/>");                        
@@ -177,7 +178,7 @@ function getProductos(){
 
 function getIva(){
             $.ajax({
-                url:   'http://localhost/is4/web_service/public/iva/getAll',
+                url:   'http://52.67.57.33/_junior/web_service/public/index.php/iva/getAll',
                 type:  'get',
                 beforeSend: function () {
                 },
@@ -191,7 +192,9 @@ function getIva(){
                             $('#antes').hide(); 
                             var longitud = response.data.length;
                             for (var i = 0; i < longitud; i++) {
-                                $('#idiva').append('<option value="'+ response.data[i].idiva  +'">' + response.data[i].descripcion  + '</option>');
+                                $('#idiva').append('<option value="'+ response.data[i].idiva  +'">' + response.data[i].descripcion  + '</option>');                                
+                                $('#idivaedit').append('<option value="'+ response.data[i].idiva  +'">' + response.data[i].descripcion  + '</option>');
+
                             }
                         }
                 }
@@ -200,7 +203,7 @@ function getIva(){
 
 function getCategoria(){
             $.ajax({
-                url:   'http://localhost/is4/web_service/public/categoria/getAll',
+                url:   'http://52.67.57.33/_junior/web_service/public/index.php/categoria/getAll',
                 type:  'get',
                 beforeSend: function () {
                 },
@@ -225,7 +228,7 @@ function getCategoria(){
 function getSubCategoria(){
             var x = document.getElementById('idcategoria').value;
             $.ajax({
-                url:   'http://localhost/is4/web_service/public/categoria/getAll',
+                url:   'http://52.67.57.33/_junior/web_service/public/index.php/categoria/getAll',
                 type:  'get',
                 beforeSend: function () {
                 },
@@ -250,7 +253,7 @@ function getSubCategoria(){
 function getSubCategoriaEdit(){
             var x = document.getElementById('idcategoriaedit').value;
             $.ajax({
-                url:   'http://localhost/is4/web_service/public/categoria/getAll',
+                url:   'http://52.67.57.33/_junior/web_service/public/index.php/categoria/getAll',
                 type:  'get',
                 beforeSend: function () {
                 },
@@ -376,7 +379,7 @@ function insertProducto(){
         };
         $.ajax({
                 data: parametros,
-                url:   'http://localhost/is4/web_service/public/producto/insert',
+                url:   'http://52.67.57.33/_junior/web_service/public/index.php/producto/insert',
                 type:  'post',
                 beforeSend: function () {
                     $('#datatable').children().empty();
@@ -415,15 +418,18 @@ function updateProducto(){
         };
         $.ajax({
                 data: parametros,
-                url:   'http://localhost/is4/web_service/public/producto/update/' + id,
+                url:   'http://52.67.57.33/_junior/web_service/public/index.php/producto/update/' + id,
                 type:  'put',
                 beforeSend: function () {
                     $('#datatable').children().empty();
                     $('#antes').show();                    
                 },
                 error: function(response) {
+                    alert('error al editar');
+                    getProductos();
                 },
                 success:  function (response) {
+                    alert('editado');
                     getProductos();
                 }
         });
